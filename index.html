@@ -1,12 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      (function () {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/assets/logo-Dj6Ky83p.png" type="image/png" />
+    <link rel="icon" href="/My-Library/assets/logo-CHEa1PFG.svg" type="image/svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shelf</title>
-    <script type="module" crossorigin src="/assets/index-LcM_UHzv.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-By2VHvtO.css">
+    <script type="module" crossorigin src="/My-Library/assets/index-Nt2F4t_X.js"></script>
+    <link rel="stylesheet" crossorigin href="/My-Library/assets/index-Tg1wKAde.css">
   </head>
   <body>
     <div id="root"></div>
