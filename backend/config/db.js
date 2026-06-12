@@ -5,11 +5,12 @@ export const connectDB = async () => {
 
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI, {
-      bufferCommands: true,
+      bufferCommands: false, 
     });
     console.log(`MongoDB Connected: ${conn.connection.host}`);
     return conn;
   } catch (error) {
     console.error(`Error connecting to the database: ${error.message}`);
+    throw error; 
   }
 };

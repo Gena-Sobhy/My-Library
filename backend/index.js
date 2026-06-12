@@ -9,8 +9,6 @@ import hardcoverRouter from "./routes/hardcover.routes.js";
 dotenv.config();
 const app = express();
 
-connectDB();
-
 app.use(express.json());
 
 const corsOptions = {
@@ -25,11 +23,24 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
-app.options("/{*path}", cors(corsOptions));
 
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    res.status(500).json({
+      error: "Database connection failed",
+      details: error.message,
+    });
+  }
+});
+
+// Routes
 app.get("/", (req, res) => {
   res.json({ message: "Backend server is running perfectly!" });
 });
