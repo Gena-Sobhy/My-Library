@@ -20,7 +20,7 @@ export const hardcoverToForm = (book) => {
       volume: book.featured_series_position || "",
     },
     format: "Paperback",
-    genres: book.genres || [], 
+    genres: book.genres || [],
     progressUnit: "Pages",
     description: book.description || "",
     slug: book.slug || "",
@@ -30,7 +30,7 @@ export const hardcoverToForm = (book) => {
 export const searchHardcover = async (query) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/hardcover/search?query=${query}`,
+      `https://my-library-green.vercel.app/api/hardcover/search?query=${query}`,
     );
     const data = await response.json();
     return data || [];
@@ -42,7 +42,7 @@ export const searchHardcover = async (query) => {
 export const fetchGenre = async (genre) => {
   try {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/api/hardcover/genre/${genre}`,
+      `https://my-library-green.vercel.app/api/hardcover/genre/${genre}`,
     );
     const data = await response.json();
 

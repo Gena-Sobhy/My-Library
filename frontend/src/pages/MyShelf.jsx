@@ -32,7 +32,7 @@ const MyShelf = () => {
     const fetchBooks = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/progress`,
+          `https://my-library-green.vercel.app/api/progress`,
         );
         const data = await response.json();
         const activeBooks = data.filter((entry) =>
@@ -40,7 +40,7 @@ const MyShelf = () => {
         );
         setBooks(activeBooks);
         // console.log(data);
-        // console.log(activeBooks); 
+        // console.log(activeBooks);
       } catch (err) {
         console.error("Failed to fetch books:", err);
       } finally {

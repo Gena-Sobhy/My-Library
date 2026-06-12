@@ -43,7 +43,7 @@ const BookInfo = () => {
         if (!currentTargetId && isbn) {
           const cleanIsbn = String(isbn).trim();
           const checkBookRes = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/books/isbn/${cleanIsbn}`,
+            `https://my-library-green.vercel.app/api/books/isbn/${cleanIsbn}`,
           );
 
           if (checkBookRes.ok) {
@@ -59,7 +59,7 @@ const BookInfo = () => {
         // Fetch progress using the confirmed ID
         if (currentTargetId) {
           const res = await fetch(
-            `${import.meta.env.VITE_API_URL}/api/progress/${currentTargetId}`,
+            `https://my-library-green.vercel.app/api/progress/${currentTargetId}`,
           );
 
           if (res.ok) {
@@ -126,7 +126,7 @@ const BookInfo = () => {
 
       if (!currentDbId) {
         const bookResponse = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/books`,
+          `https://my-library-green.vercel.app/api/books`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -143,7 +143,7 @@ const BookInfo = () => {
       }
 
       const progressResponse = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/progress`,
+        `https://my-library-green.vercel.app/api/progress`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -180,7 +180,7 @@ const BookInfo = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/books`,
+        `https://my-library-green.vercel.app/api/books`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -206,7 +206,7 @@ const BookInfo = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/progress/${dbId}`,
+        `https://my-library-green.vercel.app/api/progress/${dbId}`,
         {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },

@@ -41,7 +41,7 @@ const BookSearch = () => {
     if (apiBook.isbn) {
       try {
         const res = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/books/isbn/${apiBook.isbn}`,
+          `https://my-library-green.vercel.app/api/books/isbn/${apiBook.isbn}`,
         );
         if (res.ok) {
           const dbBook = await res.json();

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+
 const BookProgress = ({ progressData, book, onProgressUpdate }) => {
   //   const totalPages = book?.totalPages || 0;
   const progressUnit = book?.progressUnit;

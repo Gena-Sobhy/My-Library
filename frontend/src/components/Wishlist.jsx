@@ -13,7 +13,7 @@ const Wishlist = () => {
     const fetchWishlist = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/books`,
+          `https://my-library-green.vercel.app/api/books`,
         );
         if (!response.ok) throw new Error("Error fetching data");
         const allBooks = await response.json();
@@ -61,7 +61,7 @@ const Wishlist = () => {
         {/* Left Arrow - hidden on touch devices */}
         <button
           onClick={() => scroll("left")}
-          className="absolute -left-4 hidden md:flex p-2 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-700/50 text-white z-30 shadow-lg transition-transform hover:scale-110 active:scale-95 " 
+          className="absolute -left-4 hidden md:flex p-2 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-700/50 text-white z-30 shadow-lg transition-transform hover:scale-110 active:scale-95 "
         >
           <IoIosArrowBack size={24} />
         </button>

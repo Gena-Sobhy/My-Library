@@ -53,7 +53,7 @@ const AddBookForm = () => {
     e.preventDefault();
     try {
       const bookResponse = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/books`,
+        `https://my-library-green.vercel.app/api/books`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -62,19 +62,26 @@ const AddBookForm = () => {
       );
 
       if (!bookResponse.ok) {
-        throw new Error(`Failed to save book static info. Status: ${bookResponse.status}`);
+        throw new Error(
+          `Failed to save book static info. Status: ${bookResponse.status}`,
+        );
       }
 
       const savedBook = await bookResponse.json();
       // console.log("Book saved:", data);
 
       if (!savedBook || !savedBook._id) {
-        console.error("Backend did not return a valid document _id:", savedBook);
-        throw new Error("Cannot associate progress: saved book is missing an ID reference.");
+        console.error(
+          "Backend did not return a valid document _id:",
+          savedBook,
+        );
+        throw new Error(
+          "Cannot associate progress: saved book is missing an ID reference.",
+        );
       }
 
       const progressResponse = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/progress`,
+        `https://my-library-green.vercel.app/api/progress`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -89,7 +96,10 @@ const AddBookForm = () => {
 
       if (!progressResponse.ok) {
         const errorText = await progressResponse.text();
-        console.error("Progress collection rejected payload. Server response:", errorText);
+        console.error(
+          "Progress collection rejected payload. Server response:",
+          errorText,
+        );
         throw new Error("Book registered, but progress initialization failed.");
       }
 
