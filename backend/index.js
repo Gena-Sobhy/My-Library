@@ -30,6 +30,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.options("/{*path}", cors(corsOptions));
 
+app.get("/", (req, res) => {
+  res.json({ message: "Backend server is running perfectly!" });
+});
+
 app.use("/api/books", booksRouter);
 app.use("/api/progress", progressRouter);
 app.use("/api/hardcover", hardcoverRouter);
